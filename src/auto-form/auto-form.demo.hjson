@@ -1,0 +1,57 @@
+#
+# Copyright (c) 2019 Imply Data, Inc. All rights reserved.
+#
+# This software is the confidential and proprietary information
+# of Imply Data, Inc.
+
+{
+  tsx:
+    '''
+    # bork-hide
+    import * as React from 'react';
+    import * as ReactDOM from 'react-dom';
+    # bork-hide-end
+
+    import { AutoForm, AutoFormField } from 'blue-herring';
+
+    const fields: AutoFormField[] = [
+      {
+        label: 'Foo',
+        name: 'foo',
+        type: 'string'
+      }
+    ];
+
+    let model: any = {
+      foo: 'Hello yes this is dog'
+    };
+
+    const onChange = (newValue: any) => {
+      model = newValue;
+      # bork-hide
+      render();
+      # bork-hide-end
+    }
+
+    # bork-hide
+    const render = () => {
+      ReactDOM.render(
+    # bork-hide-end
+
+    <AutoForm
+      model={model}
+      fields={fields}
+      onChange={onChange}
+    />
+
+    # bork-hide
+        ,
+        document.getElementsByClassName('auto-form-demo-target')[0]
+      );
+    };
+
+    render();
+    # bork-hide-end
+
+    '''
+}

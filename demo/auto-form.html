@@ -1,0 +1,101 @@
+<!--
+IMPORTANT
+This is a generated file. Don't modify anything in it manually. Use bork instead.
+Bork (and bark) documentation can be found here : https://github.com/implydata/bark.
+ -->
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+  <title>blue-herring | auto-form</title>
+
+  <style type="text/css">a,abbr,acronym,address,applet,article,aside,audio,b,big,blockquote,body,button,canvas,caption,center,cite,code,dd,del,details,dfn,div,dl,dt,em,embed,fieldset,figcaption,figure,footer,form,h1,h2,h3,h4,h5,h6,header,html,i,iframe,img,ins,kbd,label,legend,li,mark,menu,nav,object,ol,output,p,pre,q,ruby,s,samp,section,small,span,strike,strong,sub,summary,sup,table,tbody,td,tfoot,th,thead,time,tr,tt,u,ul,var,video{margin:0;padding:0;border:0;font-size:100%;font:inherit;outline:none}article,aside,details,figcaption,figure,footer,header,menu,nav,section{display:block}body{line-height:1}ol,ul{list-style:none}table{border-collapse:collapse;border-spacing:0}input,textarea{outline:none;font-size:inherit;font-family:inherit}*{box-sizing:border-box;cursor:inherit}body *{position:relative;vertical-align:top}a{text-decoration:inherit;color:inherit;cursor:inherit}div,span{cursor:inherit}button,input{border:0;margin:0}text{cursor:default}svg *{fill:inherit}
+</style>
+
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/styles/solarized-light.min.css">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+
+  
+    <link href="blueprint.css" rel="stylesheet">
+  
+
+  
+
+  <link rel="stylesheet" type="text/css" media="screen" href="demo.css">
+
+  <style type="text/css">
+    
+  </style>
+
+
+</head>
+
+<body>
+  <div class="bork-header-bar">
+    <div class="project-title">blue-herring's auto-form</div>
+  </div>
+
+  <div class="side-bar">
+    
+      
+          <div class="side-bar-label">
+            </a>
+          </div>
+      
+    
+      
+          <a href="auto-form.html" class="side-bar-item selected">
+            Auto Form</a>
+          </a>
+      
+    
+  </div>
+
+  <div class="content">
+    
+      <div class="section demo ">
+        <div class="view auto-form-demo-target"></div>
+        <div class="section-label">Demo</div>
+      </div>
+    
+      <div class="section code ">
+        <pre><code class="jsx">
+import { AutoForm, AutoFormField } from &#39;blue-herring&#39;;
+
+const fields: AutoFormField[] = [
+  {
+    label: &#39;Foo&#39;,
+    name: &#39;foo&#39;,
+    type: &#39;string&#39;
+  }
+];
+
+let model: any = {
+  foo: &#39;Hello yes this is dog&#39;
+};
+
+const onChange = (newValue: any) =&gt; {
+  model = newValue;
+}
+
+&lt;AutoForm
+  model={model}
+  fields={fields}
+  onChange={onChange}
+/&gt;
+</code></pre>
+        <div class="section-label">Demo code</div>
+      </div>
+    
+  </div>
+
+  <script crossorigin src="https://cdnjs.cloudflare.com/ajax/libs/react/16.7.0/umd/react.development.js"></script>
+  <script crossorigin src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/16.7.0/umd/react-dom.development.js"></script>
+
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+
+  <script src="vendor.js"></script>
+  <script src="auto-form.js"></script>
+
+</body>
+</html>

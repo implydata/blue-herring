@@ -1,0 +1,219 @@
+/*
+IMPORTANT
+This is a generated file. Don't modify anything in it manually. Use bork instead.
+Bork (and bark) documentation can be found here : https://github.com/implydata/bark.
+*/
+body {
+  font-size: 13px;
+  box-sizing: border-box;
+  font-family: 'Open Sans', sans-serif; }
+
+h2 {
+  margin-bottom: 10px;
+  font-size: 1.2em;
+  color: #5e9900;
+  font-weight: bold; }
+  h2:not(:first-child) {
+    margin-top: 20px; }
+
+h3 {
+  font-weight: bold; }
+
+p {
+  line-height: 1.5em; }
+  p:not(:first-child) {
+    margin-top: 10px; }
+
+code, code * {
+  font-family: monospace !important; }
+
+.empty-page-text,
+.project-description {
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  left: 50%;
+  font-size: 20px;
+  font-weight: bold;
+  text-align: center;
+  color: #999999; }
+  .empty-page-text > *:not(:last-child),
+  .project-description > *:not(:last-child) {
+    margin-bottom: 5px;
+    border-bottom: 1px solid #999999;
+    padding-bottom: 10px; }
+
+body > .bork-header-bar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 40px;
+  background-color: #151719; }
+  body > .bork-header-bar .project-title {
+    font-size: 19px;
+    text-transform: capitalize;
+    color: #c9c9c9;
+    padding: 11px 0 0 16px; }
+
+body > .side-bar {
+  position: absolute;
+  overflow: auto;
+  top: 40px;
+  left: 0;
+  width: 250px;
+  bottom: 0;
+  padding: 20px 20px 20px 20px;
+  background-color: #232729; }
+  body > .side-bar .side-bar-label {
+    font-style: italic;
+    color: #999999;
+    margin-bottom: 7px;
+    margin-left: 10px; }
+    body > .side-bar .side-bar-label:not(:first-child) {
+      margin-top: 15px; }
+  body > .side-bar .side-bar-item {
+    display: block;
+    color: #c9c9c9;
+    cursor: pointer;
+    padding: 6px 10px; }
+    body > .side-bar .side-bar-item.selected, body > .side-bar .side-bar-item:hover {
+      color: #5e9900; }
+    body > .side-bar .side-bar-item.selected {
+      pointer-events: none; }
+      body > .side-bar .side-bar-item.selected:before {
+        content: "";
+        position: absolute;
+        left: -3px;
+        bottom: -1px;
+        top: 0;
+        border: 1px solid #5e9900; }
+      body > .side-bar .side-bar-item.selected:after {
+        content: "";
+        position: absolute;
+        right: -20px;
+        top: 4px;
+        border-style: solid;
+        border-width: 8px 8px 8px 0;
+        border-color: transparent #f0f0f0 transparent transparent; }
+
+body > .content {
+  position: absolute;
+  left: 250px;
+  right: 0;
+  top: 40px;
+  bottom: 0;
+  background-color: #f0f0f0;
+  padding: 20px;
+  overflow: auto; }
+  body > .content .section.api {
+    font-size: 12px;
+    padding-top: 0px; }
+    body > .content .section.api .class {
+      padding: 30px; }
+      body > .content .section.api .class:not(:first-child) {
+        border-top: 1px dashed #151719; }
+      body > .content .section.api .class .properties {
+        padding: 10px; }
+        body > .content .section.api .class .properties .property:not(:first-child) {
+          margin-top: 30px; }
+        body > .content .section.api .class .properties .property .label {
+          margin-bottom: 4px; }
+          body > .content .section.api .class .properties .property .label > *:not(:first-child) {
+            margin-left: 5px; }
+          body > .content .section.api .class .properties .property .label .name {
+            color: #5e9900;
+            font-weight: bold; }
+          body > .content .section.api .class .properties .property .label .type, body > .content .section.api .class .properties .property .label .optional {
+            line-height: 13px;
+            font-size: 0.8em;
+            border: 1px solid #232729;
+            color: #232729;
+            border-radius: 8px;
+            padding: 0 8px 1px 8px; }
+        body > .content .section.api .class .properties .property .description {
+          margin-top: 10px;
+          margin-bottom: 15px; }
+        body > .content .section.api .class .properties .property .examples {
+          border: 1px solid #d3eaae;
+          padding: 20px; }
+          body > .content .section.api .class .properties .property .examples h3 {
+            margin-bottom: 10px;
+            color: #232729; }
+          body > .content .section.api .class .properties .property .examples .example {
+            margin-bottom: 5px; }
+            body > .content .section.api .class .properties .property .examples .example.block .label {
+              margin-left: 11px;
+              font-style: italic;
+              margin-top: 3px;
+              color: #999999; }
+              body > .content .section.api .class .properties .property .examples .example.block .label:before {
+                content: '>';
+                position: absolute;
+                left: -10px;
+                top: 1px; }
+            body > .content .section.api .class .properties .property .examples .example:not(.block):not(:last-child) {
+              margin-bottom: 10px; }
+            body > .content .section.api .class .properties .property .examples .example:not(.block) > * {
+              display: inline-block;
+              padding: 2px 5px; }
+            body > .content .section.api .class .properties .property .examples .example:not(.block) .value {
+              background-color: rgba(211, 234, 174, 0.5); }
+  body > .content .section.description {
+    font-size: 12px;
+    padding: 30px; }
+    body > .content .section.description a {
+      border-bottom: 1px solid #151719; }
+      body > .content .section.description a:hover {
+        color: #5e9900;
+        border-color: #5e9900; }
+    body > .content .section.description em {
+      font-style: italic; }
+    body > .content .section.description.empty .text {
+      font-style: italic; }
+    body > .content .section.description ul {
+      padding-left: 10px; }
+      body > .content .section.description ul li:not(:last-child) {
+        margin-bottom: 2px; }
+      body > .content .section.description ul li:before {
+        content: '-';
+        position: absolute;
+        left: -7px; }
+  body > .content .section.code {
+    padding: 0px; }
+    body > .content .section.code pre {
+      height: 100%;
+      overflow: scroll; }
+    body > .content .section.code code {
+      height: 100%; }
+  body > .content > .section {
+    border: 1px dashed #151719;
+    background-color: white;
+    width: 100%;
+    padding-top: 30px; }
+    body > .content > .section:not(:last-child) {
+      margin-bottom: 20px; }
+    body > .content > .section.demo {
+      min-height: 300px; }
+    body > .content > .section .section-comment {
+      margin-bottom: 10px;
+      margin-left: 10px;
+      font-size: 14px; }
+      body > .content > .section .section-comment:not(:first-child) {
+        margin-top: 30px; }
+      body > .content > .section .section-comment code {
+        color: #5e9900;
+        background-color: #f0f0f0;
+        padding: 0 5px;
+        line-height: 12px; }
+    body > .content > .section > .section-label {
+      position: absolute;
+      color: #c9c9c9;
+      background-color: #232729;
+      right: -1px;
+      top: -1px;
+      padding: 4px;
+      font-size: 12px;
+      font-family: Courier; }
+  body > .content .view {
+    padding: 30px; }
