@@ -61,26 +61,44 @@ Bork (and bark) documentation can be found here : https://github.com/implydata/b
         <pre><code class="jsx">
 import { AutoForm, AutoFormField } from &#39;blue-herring&#39;;
 
-const fields: AutoFormField[] = [
-  {
-    label: &#39;Foo&#39;,
-    name: &#39;foo&#39;,
-    type: &#39;string&#39;
-  }
+let fields: AutoFormField[] = [
+  {name: &#39;Field #0&#39;, type: &#39;string&#39;},
+  {name: &#39;Field #1&#39;, type: &#39;number&#39;},
+  {name: &#39;Field #2&#39;, type: &#39;boolean&#39;},
+  {name: &#39;Field #3&#39;, type: &#39;string-array&#39;},
+  {name: &#39;Field #4&#39;, type: &#39;size-bytes&#39;},
+  {name: &#39;I am a sub-form&#39;, type: [
+    {name: &#39;Field #5&#39;, type: &#39;number&#39;},
+    {name: &#39;Field #6&#39;, type: &#39;boolean&#39;},
+    {name: &#39;Field #7&#39;, type: &#39;string-array&#39;}
+  ]}
 ];
 
 let model: any = {
-  foo: &#39;Hello yes this is dog&#39;
+  &#39;Unknown field&#39;: true,
+  &#39;Unknown complex field&#39;: {
+    &#39;Foo&#39;: 42,
+    Bar: [&#39;a&#39;, &#39;b&#39;, &#39;c&#39;]
+  },
+  &#39;I am a sub-form&#39;: {
+    &#39;Nested unknown field&#39;: &#39;Hello&#39;
+  }
 };
 
 const onChange = (newValue: any) =&gt; {
   model = newValue;
-}
+  console.log(model)
+};
+
+const onSchemaChange = (newSchema: AutoFormField[]) =&gt; {
+  fields = newSchema;
+};
 
 &lt;AutoForm
   model={model}
   fields={fields}
   onChange={onChange}
+  onSchemaChange={onSchemaChange}
 /&gt;
 </code></pre>
         <div class="section-label">Demo code</div>
@@ -88,8 +106,8 @@ const onChange = (newValue: any) =&gt; {
     
   </div>
 
-  <script crossorigin src="https://cdnjs.cloudflare.com/ajax/libs/react/16.7.0/umd/react.development.js"></script>
-  <script crossorigin src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/16.7.0/umd/react-dom.development.js"></script>
+  <script crossorigin src="react.development.js"></script>
+  <script crossorigin src="react-dom.development.js"></script>
 
   <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/highlight.min.js"></script>
   <script>hljs.initHighlightingOnLoad();</script>

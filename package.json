@@ -4,7 +4,13 @@
   "description": "Automatic form generation for React projects",
   "main": "index.js",
   "scripts": {
-    "storybook": "start-storybook -p 9001 -c .storybook"
+    "test": "jest --env=jsdom"
+  },
+  "jest": {
+    "preset": "ts-jest",
+    "testEnvironment": "jsdom",
+    "setupFilesAfterEnv": ["<rootDir>setupTests.js"],
+    "snapshotSerializers": ["enzyme-to-json/serializer"]
   },
   "repository": {
     "type": "git",
@@ -19,18 +25,31 @@
   "homepage": "https://github.com/implydata/blue-herring#readme",
   "dependencies": {
     "@blueprintjs/core": "^3.12.0",
-    "@implydata/bark": "^2.2.0",
+    "@implydata/bark": "^2.2.2",
+    "@types/enzyme": "^3.1.16",
+    "@types/user-event": "^1.4.0",
+    "enzyme": "^3.8.0",
+    "enzyme-adapter-react-16": "^1.8.0",
+    "enzyme-to-json": "^3.3.5",
     "react": "^16.7.0",
     "react-dom": "^16.7.0",
-    "tslint": "^5.12.1"
+    "react-testing-library": "^5.4.4",
+    "user-event": "^1.4.4"
   },
   "devDependencies": {
+    "@types/chai": "^4.1.7",
+    "@types/jest": "^23.3.13",
     "@types/react": "^16.7.22",
     "@types/react-dom": "^16.0.11",
+    "@types/react-test-renderer": "^16.0.3",
     "css-loader": "^2.1.0",
+    "jest": "^24.0.0",
+    "react-test-renderer": "^16.7.0",
     "style-loader": "^0.23.1",
+    "ts-jest": "^23.10.5",
     "ts-loader": "^5.3.3",
-    "typescript": "^3.2.4",
+    "tslint": "^5.12.1",
+    "typescript": "^3.3.1",
     "webpack": "^4.29.0",
     "webpack-cli": "^3.2.1"
   }
