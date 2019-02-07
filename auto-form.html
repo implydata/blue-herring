@@ -1,0 +1,193 @@
+<!--
+IMPORTANT
+This is a generated file. Don't modify anything in it manually. Use bork instead.
+Bork (and bark) documentation can be found here : https://github.com/implydata/bark.
+ -->
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+  <title>blue-herring | auto-form</title>
+
+  <style type="text/css">a,abbr,acronym,address,applet,article,aside,audio,b,big,blockquote,body,button,canvas,caption,center,cite,code,dd,del,details,dfn,div,dl,dt,em,embed,fieldset,figcaption,figure,footer,form,h1,h2,h3,h4,h5,h6,header,html,i,iframe,img,ins,kbd,label,legend,li,mark,menu,nav,object,ol,output,p,pre,q,ruby,s,samp,section,small,span,strike,strong,sub,summary,sup,table,tbody,td,tfoot,th,thead,time,tr,tt,u,ul,var,video{margin:0;padding:0;border:0;font-size:100%;font:inherit;outline:none}article,aside,details,figcaption,figure,footer,header,menu,nav,section{display:block}body{line-height:1}ol,ul{list-style:none}table{border-collapse:collapse;border-spacing:0}input,textarea{outline:none;font-size:inherit;font-family:inherit}*{box-sizing:border-box;cursor:inherit}body *{position:relative;vertical-align:top}a{text-decoration:inherit;color:inherit;cursor:inherit}div,span{cursor:inherit}button,input{border:0;margin:0}text{cursor:default}svg *{fill:inherit}
+</style>
+
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/styles/solarized-light.min.css">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+
+  
+    <link href="blueprint.css" rel="stylesheet">
+  
+
+  
+    <link rel="stylesheet" type="text/css" media="screen" href="blue-herring.css">
+  
+
+  <link rel="stylesheet" type="text/css" media="screen" href="demo.css">
+
+  <style type="text/css">
+    
+  </style>
+
+
+</head>
+
+<body>
+  <div class="bork-header-bar">
+    <div class="project-title">blue-herring's auto-form</div>
+  </div>
+
+  <div class="side-bar">
+    
+      
+          <div class="side-bar-label">
+            </a>
+          </div>
+      
+    
+      
+          <a href="auto-form.html" class="side-bar-item selected">
+            Auto Form</a>
+          </a>
+      
+    
+  </div>
+
+  <div class="content">
+    
+      <div class="section demo ">
+        <div class="view auto-form-demo-target"></div>
+        <div class="section-label">Demo</div>
+      </div>
+    
+      <div class="section code ">
+        <pre><code class="jsx">import * as React from &#39;react&#39;;
+import * as ReactDOM from &#39;react-dom&#39;;
+
+import { AutoForm, AutoFormField } from &#39;blue-herring&#39;;
+
+let schema: AutoFormField[] = [
+  {key: &#39;dataSource&#39;, type: &#39;string&#39;},
+  {key: &#39;parser&#39;, type: &#39;object&#39;, types: [
+    {key: &#39;type&#39;, type: &#39;string&#39;},
+    {key: &#39;parseSpec&#39;, type: &#39;object&#39;, types: [
+      {key: &#39;format&#39;, type: &#39;string&#39;},
+      {key: &#39;timestampSpec&#39;, type: &#39;object&#39;, types: [
+        {key: &#39;column&#39;, type: &#39;string&#39;},
+        {key: &#39;format&#39;, type: &#39;string&#39;}
+      ]},
+      {key: &#39;dimensionsSpec&#39;, type: &#39;object&#39;, types: [
+        {key: &#39;dimensions&#39;, type: &#39;array&#39;, itemsTypes: [
+          &#39;string&#39;,
+          [{key: &#39;type&#39;, type: &#39;string&#39;}, {key: &#39;name&#39;, type: &#39;string&#39;}]
+        ]},
+        {key: &#39;dimensionExclusions&#39;, type: &#39;array&#39;, itemsTypes: [&#39;string&#39;]},
+        {key: &#39;spatialDimensions&#39;, type: &#39;array&#39;, itemsTypes: [&#39;string&#39;]}
+      ]},
+    ]},
+  ]},
+  {key: &#39;metricsSpec&#39;, type: &#39;array&#39;, itemsTypes: [
+    [{key: &#39;type&#39;, type: &#39;string&#39;}, {key: &#39;name&#39;, type: &#39;string&#39;}, {key: &#39;fieldName&#39;, type: &#39;string&#39;, optional: true}],
+  ]},
+  {key: &#39;granularitySpec&#39;, type: &#39;object&#39;, types: [
+    {key: &#39;segmentGranularity&#39;, type: &#39;string&#39;},
+    {key: &#39;queryGranularity&#39;, type: &#39;string&#39;},
+    {
+      key: &#39;intervals&#39;,
+      type: &#39;date-interval&#39;,
+      stringToInterval: (s: string) =&gt; s.split(&#39;/&#39;).map(_s =&gt; new Date(_s)) as [Date, Date],
+      intervalToString: (dates: [Date, Date]) =&gt; dates[0].toLocaleDateString(&#39;en-US&#39;) + &#39;/&#39; + dates[1].toLocaleDateString(&#39;en-US&#39;)
+    }
+  ]}
+];
+
+let model: any = {
+  dataSource: &quot;wikipedia&quot;,
+  parser: {
+    type: &quot;string&quot;,
+    parseSpec: {
+      format: &quot;json&quot;,
+      timestampSpec: {
+        column: &quot;timestamp&quot;,
+        format: &quot;auto&quot;
+      },
+      dimensionsSpec: {
+        dimensions: [
+          &quot;page&quot;,
+          &quot;language&quot;,
+          &quot;user&quot;,
+          &quot;unpatrolled&quot;,
+          &quot;newPage&quot;,
+          &quot;robot&quot;,
+          &quot;anonymous&quot;,
+          &quot;namespace&quot;,
+          &quot;continent&quot;,
+          &quot;country&quot;,
+          &quot;region&quot;,
+          &quot;city&quot;,
+          {type: &quot;long&quot;, name: &quot;countryNum&quot;},
+          {type: &quot;float&quot;, name: &quot;userLatitude&quot;},
+          {type: &quot;float&quot;, name: &quot;userLongitude&quot;}
+        ],
+        dimensionExclusions: [],
+        spatialDimensions: []
+      }
+    }
+  },
+  metricsSpec: [
+    {type: &quot;count&quot;, name: &quot;count&quot;},
+    {type: &quot;doubleSum&quot;, name: &quot;added&quot;, fieldName: &quot;added&quot;},
+    {type: &quot;doubleSum&quot;, name: &quot;deleted&quot;, fieldName: &quot;deleted&quot;},
+    {type: &quot;doubleSum&quot;, name: &quot;delta&quot;, fieldName: &quot;delta&quot;}
+  ],
+  granularitySpec: {
+    segmentGranularity: &quot;DAY&quot;,
+    queryGranularity: &quot;NONE&quot;,
+    intervals: [&quot;2013-08-31/2013-09-01&quot;]
+  },
+  transformSpec: null
+};
+
+const onChange = (newValue: any) =&gt; {
+  model = newValue;
+  console.log(model)
+  render();
+};
+
+const onSchemaChange = (newSchema: AutoFormField[]) =&gt; {
+  schema = newSchema;
+  render();
+};
+
+const render = () =&gt; {
+  ReactDOM.render(
+
+    &lt;AutoForm
+      model={model}
+      schema={schema}
+      onChange={onChange}
+      onSchemaChange={onSchemaChange}
+    /&gt;
+
+    ,
+    document.getElementsByClassName(&#39;auto-form-demo-target&#39;)[0]
+  );
+};
+
+render();
+</code></pre>
+        <div class="section-label">Demo code</div>
+      </div>
+    
+  </div>
+
+  <script crossorigin src="react.development.js"></script>
+  <script crossorigin src="react-dom.development.js"></script>
+
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+
+  <script src="vendor.js"></script>
+  <script src="auto-form.js"></script>
+
+</body>
+</html>
