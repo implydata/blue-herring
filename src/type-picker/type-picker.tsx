@@ -7,19 +7,18 @@ import {
 import { IconNames, IconName } from "@blueprintjs/icons";
 
 
-import { PrimitiveValue } from '../types/types';
+import { PrimitiveType } from '../types/types';
 
-const ICONS: Record<PrimitiveValue, IconName> = {
+const ICONS: Record<PrimitiveType, IconName> = {
   number: IconNames.NUMERICAL,
   "size-bytes": IconNames.ZOOM_TO_FIT,
-  "string-array": IconNames.TAG,
   boolean: IconNames.SEGMENTED_CONTROL,
   string: IconNames.FONT
 };
 
 export interface TypePickerProps extends React.Props<any> {
-  type: PrimitiveValue;
-  onChange: (newType: PrimitiveValue) => void;
+  type: PrimitiveType;
+  onChange: (newType: PrimitiveType) => void;
 }
 
 export interface TypePickerState {
@@ -39,7 +38,7 @@ export class TypePicker extends React.Component<TypePickerProps, TypePickerState
 
     const menu = <Menu>
       {
-        Object.keys(ICONS).map((t: PrimitiveValue) => (
+        Object.keys(ICONS).map((t: PrimitiveType) => (
           <MenuItem key={t} icon={ICONS[t]} text={t} onClick={() => onChange(t)} active={t === type}/>
         ))
       }
