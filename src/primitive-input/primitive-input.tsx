@@ -34,6 +34,7 @@ export class PrimitiveInput extends React.Component<PrimitiveInputProps, Primiti
     const { model, onChange } = this.props;
 
     return <NumericInput
+      className="primitive-input"
       value={model}
       onValueChange={v => {
         if (isNaN(v)) return;
@@ -46,6 +47,7 @@ export class PrimitiveInput extends React.Component<PrimitiveInputProps, Primiti
     const { model, onChange } = this.props;
 
     return <NumericInput
+      className="primitive-input"
       value={model}
       onValueChange={v => {
         if (isNaN(v)) return;
@@ -61,6 +63,7 @@ export class PrimitiveInput extends React.Component<PrimitiveInputProps, Primiti
     const { model, onChange } = this.props;
 
     return <InputGroup
+      className="primitive-input"
       value={model}
       onChange={(v: any) => {
         onChange(v.target.value);
@@ -72,6 +75,7 @@ export class PrimitiveInput extends React.Component<PrimitiveInputProps, Primiti
     const { model, onChange } = this.props;
 
     return <HTMLSelect
+      className="primitive-input"
       options={["True", "False"]}
       value={model === true ? "True" : "False"}
       onChange={e => {

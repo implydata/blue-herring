@@ -10,22 +10,21 @@ export interface AutoFormProps extends React.Props<any> {
 }
 
 export class AutoForm extends React.Component<AutoFormProps, {}> {
-  renderField = (field: AutoFormField) => {
-    const { model, onChange } = this.props;
-
-    return <Input
-      key={field.key}
-      field={field}
-      model={model}
-      onChange={v => onChange(Object.assign({}, model, {[field.key]: v}))}
-    />;
-  }
-
   render() {
-    const { schema, model } = this.props;
+    const { schema, model, onChange } = this.props;
+
+    if (!model) return null;
+
+    const field: AutoFormField = {
+      type: 'object', types: schema, key: '__root__', label: 'My awesome form'
+    };
 
     return <div className="auto-form">
-      {model && schema.map(this.renderField)}
+      <Input
+        field={field}
+        model={{__root__: model}}
+        onChange={onChange}
+      />
     </div>
   }
 }

@@ -1,4 +1,5 @@
 import * as React from 'react';
+import * as classNames from 'classnames';
 import { FormGroup } from "@blueprintjs/core";
 
 import { makeLabel } from '../utils/label'
@@ -9,6 +10,7 @@ export interface ArrayInputProps extends React.Props<any> {
   field: AutoFormField & ArrayType;
   model: any;
   onChange: (newModel: any) => void;
+  className?: string;
 }
 
 export class ArrayInput extends React.Component<ArrayInputProps, {}> {
@@ -23,7 +25,7 @@ export class ArrayInput extends React.Component<ArrayInputProps, {}> {
 
 
     const keys = Object.keys(value);
-    if (type.every(t => keys.indexOf('' + t.key) > -1 || t.optional) && keys.every(k => !!type.find( t => t.key === k))) return true;
+    if (type.every(t => keys.indexOf('' + t.key) > -1) && keys.every(k => !!type.find( t => t.key === k))) return true;
 
     return false;
   }
@@ -45,9 +47,9 @@ export class ArrayInput extends React.Component<ArrayInputProps, {}> {
   }
 
   render() {
-    const { field, model, onChange } = this.props;
+    const { field, model, onChange, className } = this.props;
 
-    const values = model[field.key] as any[];
+    const values = model as any[];
 
     const label = field.label || makeLabel('' + field.key);
 
@@ -57,7 +59,7 @@ export class ArrayInput extends React.Component<ArrayInputProps, {}> {
       onChange(newArray);
     };
 
-    return <React.Fragment key={field.key}>
+    return <div className={classNames('array-input', className)} key={field.key}>
       <FormGroup label={label} inline/>
 
       {values.map((value, i) => {
@@ -68,8 +70,9 @@ export class ArrayInput extends React.Component<ArrayInputProps, {}> {
           field={_field}
           model={values}
           onChange={v => onValueChange(v, i)}
+          possibleTypes={field.itemsTypes}
         />;
       })}
-    </React.Fragment>
+    </div>;
   }
 }

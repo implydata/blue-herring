@@ -1,13 +1,12 @@
 import * as React from 'react';
 import {
   Button, Position,
-  Menu, MenuItem, MenuDivider, Popover
+  Menu, MenuItem, MenuDivider, Popover, Label
 } from "@blueprintjs/core";
 
 import { IconNames, IconName } from "@blueprintjs/icons";
 
-
-import { PrimitiveType } from '../types/types';
+import { PrimitiveType, AutoFormField, isPrimitive } from '../types/types';
 
 const ICONS: Record<PrimitiveType, IconName> = {
   number: IconNames.NUMERICAL,
@@ -17,8 +16,12 @@ const ICONS: Record<PrimitiveType, IconName> = {
 };
 
 export interface TypePickerProps extends React.Props<any> {
-  type: PrimitiveType;
-  onChange: (newType: PrimitiveType) => void;
+  label?: string;
+  type: PrimitiveType | AutoFormField[];
+  onChange: (newType: PrimitiveType | AutoFormField[]) => void;
+  types: (PrimitiveType | AutoFormField[])[];
+  onFold?: () => void;
+  folded?: boolean;
 }
 
 export interface TypePickerState {
@@ -32,17 +35,42 @@ export class TypePicker extends React.Component<TypePickerProps, TypePickerState
     this.state = {};
   }
 
-  render() {
+  renderMenuItem = (field: PrimitiveType | AutoFormField[], index: number) => {
     const { type, onChange } = this.props;
+
+    if (!isPrimitive(field)) {
+
+      const isActive = JSON.stringify(type) === JSON.stringify(field);
+
+      return <MenuItem
+        key={index}
+        icon={this.getIcon(field)}
+        text={'{ ' + field.map(f => f.key).join(', ') + ' }'}
+        onClick={() => onChange(field)}
+        active={isActive}
+      />;
+    }
+
+    return <MenuItem
+      key={index}
+      icon={this.getIcon(field)}
+      text={field}
+      onClick={() => onChange(field)}
+      active={field === type}
+    />;
+  }
+
+  getIcon(type: (PrimitiveType | AutoFormField[])): IconName {
+    if (isPrimitive(type)) return ICONS[type];
+
+    return IconNames.CUBE;
+  }
+
+  renderButton() {
+    const { type, onChange, types } = this.props;
     const { open } = this.state;
 
-    const menu = <Menu>
-      {
-        Object.keys(ICONS).map((t: PrimitiveType) => (
-          <MenuItem key={t} icon={ICONS[t]} text={t} onClick={() => onChange(t)} active={t === type}/>
-        ))
-      }
-    </Menu>;
+    if (!types) return null;
 
     return <Popover
       isOpen={open}
@@ -50,8 +78,37 @@ export class TypePicker extends React.Component<TypePickerProps, TypePickerState
       canEscapeKeyClose
       onClose={() => this.setState({open: false})}
     >
-      <Button onClick={() => this.setState({open: !open})} icon={ICONS[type]}/>
-      {menu}
+      <Button minimal onClick={() => this.setState({open: !open})} icon={this.getIcon(type)}/>
+      <Menu>
+        {types.map(this.renderMenuItem)}
+      </Menu>
     </Popover>;
+  }
+
+  renderFolder() {
+    const { folded, onFold } = this.props;
+
+    return <Button
+      onClick={onFold}
+      className="folder"
+      small
+      minimal
+      icon={folded ? IconNames.CARET_RIGHT : IconNames.CARET_DOWN}
+    />;
+  }
+
+  render() {
+    const { type, onChange, types, label, onFold } = this.props;
+    const { open } = this.state;
+
+    const button = this.renderButton();
+
+    if (!label) return button;
+
+    return <div className="type-picker">
+      {onFold ? this.renderFolder() : null}
+      <div className="type-picker-label">{label}</div>
+      {button}
+    </div>;
   }
 }

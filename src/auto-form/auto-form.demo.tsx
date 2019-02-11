@@ -24,7 +24,8 @@ let schema: AutoFormField[] = [
     ]},
   ]},
   {key: 'metricsSpec', type: 'array', itemsTypes: [
-    [{key: 'type', type: 'string'}, {key: 'name', type: 'string'}, {key: 'fieldName', type: 'string', optional: true}],
+    [{key: 'type', type: 'string'}, {key: 'name', type: 'string'}],
+    [{key: 'type', type: 'string'}, {key: 'name', type: 'string'}, {key: 'fieldName', type: 'string'}],
   ]},
   {key: 'granularitySpec', type: 'object', types: [
     {key: 'segmentGranularity', type: 'string'},

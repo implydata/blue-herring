@@ -7,31 +7,71 @@
 
 import * as React from 'react';
 
-import { FormGroup } from "@blueprintjs/core";
+import { FormGroup, Button } from "@blueprintjs/core";
+import * as classNames from 'classnames';
 
 import { AutoForm } from '../auto-form/auto-form';
 import { makeLabel } from '../utils/label'
-import { AutoFormField, ObjectType } from '../types/types';
+import { AutoFormField, ObjectType, PrimitiveType } from '../types/types';
+import { Input } from '../input/input';
+import { TypePicker } from '../type-picker/type-picker';
 
 export interface ObjectInputProps extends React.Props<any> {
   field: AutoFormField & ObjectType;
   model: any;
   onChange: (newModel: any) => void;
+  possibleTypes?: (PrimitiveType | AutoFormField[])[];
+  className?: string;
 }
 
-export class ObjectInput extends React.Component<ObjectInputProps, {}> {
+export interface ObjectInputState {
+  collapsed?: boolean;
+}
+
+export class ObjectInput extends React.Component<ObjectInputProps, ObjectInputState> {
+  constructor(props: ObjectInputProps, context: any) {
+    super(props, context);
+
+    this.state = {};
+  }
+
+  renderField = (field: AutoFormField) => {
+    const { model, onChange } = this.props;
+
+    return <Input
+      className="object-field"
+      key={field.key}
+      field={field}
+      model={model}
+      onChange={v => onChange(Object.assign({}, model, {[field.key]: v}))}
+    />;
+  }
+
+  onFold = () => {
+    const { collapsed } = this.state;
+
+    this.setState({
+      collapsed: !collapsed
+    });
+  }
+
   render() {
-    const { onChange, field, model } = this.props;
+    const { onChange, field, model, possibleTypes, className } = this.props;
+    const { collapsed } = this.state;
 
-    const label = field.label || makeLabel('' + field.key);
+    const label = field.label || makeLabel('' + field.key)
 
-    return <React.Fragment key={field.key}>
-      <FormGroup label={label} inline/>
-      <AutoForm
-        schema={field.types}
-        model={model[field.key]}
-        onChange={onChange}
+    return <div className={classNames('object-input', className)} key={field.key}>
+      <TypePicker
+        onFold={this.onFold}
+        folded={collapsed}
+        type={field.types}
+        onChange={t => console.log(t)}
+        types={possibleTypes}
+        label={label}
+
       />
-    </React.Fragment>;
+      {collapsed ? null : field.types.map(this.renderField)}
+    </div>;
   }
 }
