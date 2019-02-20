@@ -20,6 +20,7 @@
   },
   "include": [
     "src/blue-herring.ts",
-    "src/**/*.mocha.tsx"
+    "src/**/*.mocha.tsx",
+    "src/**/*.demo.tsx"
   ]
 }
