@@ -1,6 +1,6 @@
 {
   "name": "blue-herring",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "Automatic form generation for React projects",
   "main": "build/blue-herring.js",
   "typings": "build/index.d.ts",
