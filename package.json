@@ -1,10 +1,15 @@
 {
   "name": "blue-herring",
-  "version": "1.0.0",
+  "version": "0.0.0",
   "description": "Automatic form generation for React projects",
-  "main": "index.js",
+  "main": "build/blue-herring.js",
+  "typings": "build/index.d.ts",
+  "files": [
+    "build"
+  ],
   "scripts": {
-    "test": "jest --env=jsdom"
+    "test": "jest --env=jsdom",
+    "compile": "webpack"
   },
   "jest": {
     "preset": "ts-jest",
@@ -28,36 +33,40 @@
   },
   "homepage": "https://github.com/implydata/blue-herring#readme",
   "dependencies": {
-    "@blueprintjs/core": "^3.12.0",
-    "@implydata/bark": "^2.2.2",
-    "@types/enzyme": "^3.1.16",
+    "@blueprintjs/core": "^3.13.0",
+    "@implydata/bark": "^2.2.4",
+    "@types/enzyme": "^3.1.18",
     "@types/user-event": "^1.4.0",
     "classnames": "^2.2.6",
-    "enzyme": "^3.8.0",
-    "enzyme-adapter-react-16": "^1.8.0",
+    "enzyme": "^3.9.0",
+    "enzyme-adapter-react-16": "^1.9.1",
     "enzyme-to-json": "^3.3.5",
-    "hear-ye": "0.0.3",
-    "react": "^16.7.0",
-    "react-dom": "^16.7.0",
-    "react-testing-library": "^5.4.4",
+    "hear-ye": "0.0.4",
+    "react": "^16.8.2",
+    "react-dom": "^16.8.2",
+    "react-testing-library": "^5.9.0",
     "user-event": "^1.4.4"
   },
   "devDependencies": {
     "@types/chai": "^4.1.7",
     "@types/classnames": "^2.2.7",
-    "@types/jest": "^23.3.13",
-    "@types/react": "^16.7.22",
-    "@types/react-dom": "^16.0.11",
-    "@types/react-test-renderer": "^16.0.3",
+    "@types/jest": "^24.0.6",
+    "@types/react": "^16.8.4",
+    "@types/react-dom": "^16.8.2",
+    "@types/react-test-renderer": "^16.8.1",
     "css-loader": "^2.1.0",
-    "jest": "^24.0.0",
-    "react-test-renderer": "^16.7.0",
+    "import-glob-loader": "^1.1.0",
+    "jest": "^24.1.0",
+    "postcss-loader": "^3.0.0",
+    "postcss-preset-env": "^6.5.0",
+    "react-test-renderer": "^16.8.2",
+    "sass-loader": "^7.1.0",
     "style-loader": "^0.23.1",
-    "ts-jest": "^23.10.5",
+    "ts-jest": "^24.0.0",
     "ts-loader": "^5.3.3",
     "tslint": "^5.12.1",
-    "typescript": "^3.3.1",
-    "webpack": "^4.29.0",
-    "webpack-cli": "^3.2.1"
+    "typescript": "^3.3.3",
+    "webpack": "^4.29.5",
+    "webpack-cli": "^3.2.3"
   }
 }

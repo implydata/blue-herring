@@ -6,6 +6,8 @@ import { makeLabel } from '../utils/label'
 import { AutoFormField, ArrayType, ArrayItemsType } from '../types/types';
 import { Input } from '../input/input';
 
+import './array-input.scss';
+
 export interface ArrayInputProps extends React.Props<any> {
   field: AutoFormField & ArrayType;
   model: any;
