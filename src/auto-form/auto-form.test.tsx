@@ -4,18 +4,18 @@ import { render, fireEvent } from 'react-testing-library';
 import userEvent from 'user-event';
 import { shallow, mount } from 'enzyme';
 
-import { AutoForm, AutoFormField } from './auto-form';
+import { AutoForm } from './auto-form';
+import { AutoFormField } from '../types/types';
 
 describe('<AutoForm/>', () => {
 
   // react-testing-library
   it('fills a flat form at startup (react-testing-library)', () => {
     const fields: AutoFormField[] = [
-      {name: "string", type: "string"},
-      {name: "number", type: "number"},
-      {name: "boolean", type: "boolean"},
-      {name: "string_array", type: "string-array"},
-      {name: "size_bytes", type: "size-bytes"}
+      {key: "string", type: "string"},
+      {key: "number", type: "number"},
+      {key: "boolean", type: "boolean"},
+      {key: "size_bytes", type: "size-bytes"}
     ];
 
     const originalModel = {
@@ -30,7 +30,7 @@ describe('<AutoForm/>', () => {
 
     const onChange = (newModel: typeof originalModel) => model = newModel;
 
-    const comp = <AutoForm fields={fields} model={originalModel} onChange={onChange} />;
+    const comp = <AutoForm schema={fields} model={originalModel} onChange={onChange} />;
 
 
     const { container, getByValue, getByText } = render(comp);
@@ -60,11 +60,10 @@ describe('<AutoForm/>', () => {
   // Enzyme
   it('fills a flat form at startup (enzyme)', () => {
     const fields: AutoFormField[] = [
-      {name: "string", type: "string"},
-      {name: "number", type: "number"},
-      {name: "boolean", type: "boolean"},
-      {name: "string_array", type: "string-array"},
-      {name: "size_bytes", type: "size-bytes"}
+      {key: "string", type: "string"},
+      {key: "number", type: "number"},
+      {key: "boolean", type: "boolean"},
+      {key: "size_bytes", type: "size-bytes"}
     ];
 
     const originalModel = {
@@ -79,7 +78,7 @@ describe('<AutoForm/>', () => {
 
     const onChange = (newModel: typeof originalModel) => model = newModel;
 
-    const comp = <AutoForm fields={fields} model={originalModel} onChange={onChange} />;
+    const comp = <AutoForm schema={fields} model={originalModel} onChange={onChange} />;
     const shallowed = shallow(comp);
     expect(shallowed).toMatchSnapshot();
 

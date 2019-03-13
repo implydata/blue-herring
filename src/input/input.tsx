@@ -17,6 +17,8 @@ import { TypePicker } from '../type-picker/type-picker';
 
 import { makeLabel } from '../utils/label';
 
+import './input.scss';
+
 class Tab extends React.Component {
   render() {return <div style={{marginLeft: 20}}>{this.props.children}</div>;}
 }

@@ -1,37 +1,36 @@
-const postcssPresetEnv = require('postcss-preset-env');
 
 module.exports = {
-  mode: 'development',
+  mode: process.env.NODE_ENV || 'development',
   entry: './src/index.ts',
   module: {
     rules: [
       {
         test: /\.tsx?$/,
-        use: ['ts-loader', 'import-glob-loader'],
+        use: ['ts-loader'],
       },
       {
         test: /\.s?css$/,
         use: [
-          {loader: 'style-loader'}, // creates style nodes from JS strings
-          {loader: 'css-loader', options: {modules: true}}, // translates CSS into CommonJS
+          {loader: 'style-loader'},
+          {loader: 'css-loader'},
           {
             loader: 'postcss-loader',
             options: {
               ident: 'postcss',
               plugins: () => [
-                postcssPresetEnv({
+                require('postcss-preset-env')({
                   browsers: ['> 1%', 'last 3 versions', 'Firefox ESR', 'Opera 12.1']
                 })
               ]
             }
           },
-          {loader: 'sass-loader'} // compiles Sass to CSS, using Node Sass by default
+          {loader: 'sass-loader'}
         ]
       }
     ]
   },
   resolve: {
-    extensions: [ '.demo.tsx', '.tsx', '.ts', '.js', '.scss', '.css' ]
+    extensions: [ '.tsx', '.ts', '.js', '.scss' ]
   },
 
   output: {

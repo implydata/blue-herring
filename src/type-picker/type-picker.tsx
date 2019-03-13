@@ -8,6 +8,8 @@ import { IconNames, IconName } from "@blueprintjs/icons";
 
 import { PrimitiveType, AutoFormField, isPrimitive } from '../types/types';
 
+import './type-picker.scss';
+
 const ICONS: Record<PrimitiveType, IconName> = {
   number: IconNames.NUMERICAL,
   "size-bytes": IconNames.ZOOM_TO_FIT,

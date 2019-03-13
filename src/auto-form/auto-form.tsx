@@ -2,6 +2,8 @@ import * as React from 'react';
 import { AutoFormField, ObjectType, ArrayType, ArrayItemsType, PrimitiveType } from '../types/types';
 import { Input } from '../input/input';
 
+import './auto-form.scss';
+
 export interface AutoFormProps extends React.Props<any> {
   schema: AutoFormField[];
   model: any,

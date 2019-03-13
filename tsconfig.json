@@ -13,6 +13,7 @@
     "lib": ["dom", "es2016"],
     "module": "commonjs",
     "rootDir": "src",
+    "baseUrl": ".",
     "outDir": "build",
     "moduleResolution": "node",
     "jsx": "react",

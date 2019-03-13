@@ -6,12 +6,12 @@ import { Example, Gallery } from 'hear-ye';
 import { AutoForm } from './auto-form';
 import { AutoFormField } from '../types/types';
 
-export interface AutoFormDemoState {
+export interface DemoState {
   schema?: AutoFormField[];
   model?: any;
 }
 
-class AutoFormDemo extends React.Component<{}, AutoFormDemoState> {
+class Demo extends React.Component<{}, DemoState> {
   constructor(props: {}) {
     super(props);
 
@@ -121,6 +121,6 @@ class AutoFormDemo extends React.Component<{}, AutoFormDemoState> {
 }
 
 Gallery.add({
-  name: 'auto-form-demo',
-  component: <AutoFormDemo/>
+  path: ['AutoForm'],
+  component: <Demo/>
 });

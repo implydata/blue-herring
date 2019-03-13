@@ -16,6 +16,8 @@ import { AutoFormField, ObjectType, PrimitiveType } from '../types/types';
 import { Input } from '../input/input';
 import { TypePicker } from '../type-picker/type-picker';
 
+import './object-input.scss';
+
 export interface ObjectInputProps extends React.Props<any> {
   field: AutoFormField & ObjectType;
   model: any;
