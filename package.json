@@ -28,6 +28,11 @@
     "type": "git",
     "url": "git+https://github.com/implydata/blue-herring.git"
   },
+  "husky": {
+    "hooks": {
+      "pre-commit": "check-code-style --ts-level 1 --scss-level 0"
+    }
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",
@@ -43,6 +48,7 @@
     "react-dom": "^16.8.4"
   },
   "devDependencies": {
+    "@implydata/im-code-style": "^0.1.0",
     "@types/chai": "^4.1.7",
     "@types/classnames": "^2.2.7",
     "@types/enzyme": "^3.9.0",
